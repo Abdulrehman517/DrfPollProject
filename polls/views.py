@@ -12,6 +12,5 @@ def polls_list(request):
 
 def polls_detail(request, pk):
     poll = get_object_or_404(Poll, pk=pk)
-    data = {'results':{'question':poll.question, 'created_by':poll.created_by.username, 'pub_date':poll.pub_date}}
+    data = {'results': {'question': poll.question, 'created_by': poll.created_by.username, 'pub_date': poll.pub_date}}
     return JsonResponse(data)
-
