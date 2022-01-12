@@ -1,7 +1,8 @@
 from django.urls import path
 from .views import polls_list, polls_detail
-from .apiviews import PollList, PollDetail, ChoiceList, CreateVote, CreateUser
+from .apiviews import PollList, PollDetail, ChoiceList, CreateVote, CreateUser, LoginView
 from rest_framework.routers import DefaultRouter
+from rest_framework.authtoken import views
 from .apiviews import PollViewSet
 
 router = DefaultRouter()
@@ -22,6 +23,9 @@ urlpatterns = [
     path("polls/<int:pk>/choices/<int:choice_pk>/vote/", CreateVote.as_view(), name="create_vote"),
 
     path('users/', CreateUser.as_view(), name='user_create'),
+
+    path('login/', LoginView.as_view(), name='login'),
+    # path("login/", views.obtain_auth_token, name="login"),
 
 ]
 urlpatterns += router.urls
