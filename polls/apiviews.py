@@ -5,7 +5,7 @@ from rest_framework import generics
 from rest_framework import status
 from rest_framework import viewsets
 from .models import Poll, Choice
-from .serializers import PollSerializer, ChoiceSerializer, VoteSerializer
+from .serializers import PollSerializer, ChoiceSerializer, VoteSerializer, UserSerializer
 
 
 #
@@ -60,3 +60,7 @@ class CreateVote(generics.CreateAPIView):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class CreateUser(generics.CreateAPIView):
+    serializer_class = UserSerializer
